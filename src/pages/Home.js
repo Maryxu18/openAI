@@ -16,8 +16,8 @@ function Home() {
 
   return (
     <>
-      <Form responses={responses} />
-      <ResponseList updateResponses={updateResponses}> </ResponseList>
+      <Form updateResponses={updateResponses} />
+      <ResponseList responses={responses}> </ResponseList>
     </>
   );
 }

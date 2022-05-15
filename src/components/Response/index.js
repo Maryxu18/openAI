@@ -13,11 +13,11 @@ const Response = ({ response }) => {
       </div>
       <div className="container">
         <div className="header"> Prompt:</div>
-        <div className="info p"> {response.prompt} </div>
+        <div className="info p text-break"> {response.prompt} </div>
       </div>
       <div className="container">
         <div className="header">Response:</div>
-        <div className="info p"> {response.response} </div>
+        <div className="info p text-break"> {response.response} </div>
       </div>
     </div>
   );

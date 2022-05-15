@@ -7,9 +7,11 @@ Moment.globalFormat = 'D MMM YYYY';
 const Response = ({ response }) => {
   return (
     <div className="flex">
-      <div className="date_header form-text">
+      <div className="form-text container">
         <div>{response.engineName} Engine</div>
-        <Moment unix>{response.date}</Moment>
+        <Moment unix className="date-label">
+          {response.date}
+        </Moment>
       </div>
       <div className="container">
         <div className="header"> Prompt:</div>

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Pagination from '../Pagination';
 import Response from '../Response';
 import { enginesData } from '../../constants/AIEngine';
+import './index.style.css';
 
 function ResponseList({ responseList }) {
   const pageSize = 2;
@@ -32,6 +33,11 @@ function ResponseList({ responseList }) {
     setCurrentReponses(responseList.slice(page - 1, page + pageSize - 1));
   };
 
+  const changeEngine = (engine) => {
+    changePage(1);
+    setEngine(engine);
+  };
+
   return (
     <div>
       <div className="h3" style={{ textAlign: 'left' }}>
@@ -45,7 +51,7 @@ function ResponseList({ responseList }) {
             'btn-outline-primary': engine !== 'All',
             'btn-primary': engine === 'All'
           })}
-          onClick={() => setEngine('All')}>
+          onClick={() => changeEngine('All')}>
           All
         </button>
         {enginesData &&
@@ -58,7 +64,7 @@ function ResponseList({ responseList }) {
                   'btn-outline-primary': engine !== e.name,
                   'btn-primary': engine === e.name
                 })}
-                onClick={() => setEngine(e.name)}>
+                onClick={() => changeEngine(e.name)}>
                 {e.name}
               </button>
             );

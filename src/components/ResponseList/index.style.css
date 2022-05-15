@@ -1,17 +1,13 @@
 .tool-bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
-
-/* @media screen and (max-width: 750px) {
-    .toolbar {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-} */
+.tool-bar .btn {
+    margin: 0 5px;
+    padding: 1px 5px !important;
+}
 
 .form-select {
     width: auto !important;

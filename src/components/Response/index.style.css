@@ -1,17 +1,10 @@
 .flex {
     display: flex;
     flex-direction: column;
-    background-color: #E4F0EF;
+    border: 1px solid #0d6efd;
     border-radius: 20px;
     padding: 10px 10px;
     margin-bottom: 10px;
-}
-
-.date_header {
-    text-align: right;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .container {
@@ -26,4 +19,6 @@
     text-align: left;
 }
 
-.info {}
+.date-label {
+    text-align: right;
+}

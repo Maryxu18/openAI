@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { usePagination, DOTS } from '../../utils/usePagination';
 import './index.style.css';
+import PropTypes from 'prop-types';
 
 const Pagination = (props) => {
   const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize, className } = props;
@@ -69,6 +70,15 @@ const Pagination = (props) => {
       </li>
     </ul>
   );
+};
+
+Pagination.propTypes = {
+  onPageChange: PropTypes.func,
+  totalCount: PropTypes.number,
+  siblingCount: PropTypes.number,
+  currentPage: PropTypes.number,
+  pageSize: PropTypes.number,
+  className: PropTypes.string
 };
 
 export default Pagination;

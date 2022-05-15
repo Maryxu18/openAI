@@ -6,10 +6,8 @@ const initialState = {
 const responseReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_RESPONSE_SUCCESS':
-      // state.responseList = [action.payload.response, ...state.responseList];
       return { error: null, responseList: [action.payload, ...state.responseList] };
     case 'ADD_RESPONSE_FAILURE':
-      // state.responseList = [action.payload.response, ...state.responseList];
       return { ...state, error: action.payload.error };
     default:
       return state;

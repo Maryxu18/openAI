@@ -14,7 +14,7 @@ export const addResponseFailure = (error) => {
   };
 };
 
-export const getResponse = (prompt) => {
+export const getResponse = (prompt, engine) => {
   return (dispatch) => {
     const data = {
       prompt,
@@ -26,15 +26,18 @@ export const getResponse = (prompt) => {
     };
 
     api
-      .post(`text-curie-001/completions`, data)
+      .post(`${engine}/completions`, data)
       .then((res) => {
         const newResponse = res.data.choices[0].text;
         const newResponseDate = res.data.created;
+        const engineName = engine.split('-')[1];
+        const capitalizedEngine = engineName.charAt(0).toUpperCase() + engineName.slice(1);
         dispatch(
           addResponseSuccess({
             prompt,
             response: newResponse,
-            date: newResponseDate
+            date: newResponseDate,
+            engineName: capitalizedEngine
           })
         );
       })

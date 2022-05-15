@@ -1,7 +1,7 @@
-import React from "react";
-import "./index.style.scss";
-import Moment from "react-moment";
-Moment.globalFormat = "D MMM YYYY";
+import React from 'react';
+import './index.style.scss';
+import Moment from 'react-moment';
+Moment.globalFormat = 'D MMM YYYY';
 
 const Response = ({ response }) => {
   return (

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Response from "../Response";
+import React, { useState } from 'react';
+import Response from '../Response';
 
 function ResponseList({ responseList }) {
   return (
     <div>
-      <div className="h3" style={{ textAlign: "left" }}>
+      <div className="h3" style={{ textAlign: 'left' }}>
         Responses
       </div>
       {responseList ? (

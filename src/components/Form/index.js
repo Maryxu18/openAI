@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import * as ActionCreators from '../../redux/actions';
-// import { enginesData } from '../../constants/AIEngine';
+import classNames from 'classnames';
+import { enginesData } from '../../constants/AIEngine';
+import PropTypes from 'prop-types';
 
 function Form({ error, actions }) {
   const [prompt, setPrompt] = useState('');
   const [engine, setEngine] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
-
+  console.log(enginesData);
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -66,10 +66,14 @@ function Form({ error, actions }) {
             <option value="" selected disabled hidden>
               Select an Option
             </option>
-            <option value="text-ada-001">Ada (Fastest)</option>
-            <option value="text-babbage-001">Babbage</option>
-            <option value="text-curie-001">Curie</option>
-            <option value="text-davinci-002">Davinci (Most Powerful)</option>
+            {enginesData &&
+              enginesData.map((engine, idx) => {
+                return (
+                  <option key={idx} value={engine.value}>
+                    {engine.desc}
+                  </option>
+                );
+              })}
           </select>
           <div className="invalid-feedback">Please select an AI engine</div>
         </div>
@@ -83,6 +87,7 @@ function Form({ error, actions }) {
     </div>
   );
 }
+
 Form.propTypes = {
   error: PropTypes.string,
   actions: PropTypes.object

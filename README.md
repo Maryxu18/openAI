@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# Shopify Fall 2022 Frontend Challenge
+
+[Link to Project](https://shopify-f22-challenge.herokuapp.com/)
+
+This project uses **redux** for state management, and **bootstrap** for styling.
+
+## Basic Features
+
+- A form for entering text prompts
+- Submitting the form sends the prompt to the OpenAI API
+- Results are displayed in a list, sorted from newest to oldest. Each result should include the original prompt and a response from the API.
+
+## Additional Features
+
+- Save responses if the user leaves or reloads the page
+- Let the user choose the AI engine from a select box
+- Let the user filter responses by AI engine
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

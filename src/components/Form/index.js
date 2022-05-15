@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
-import api from '../../services/api';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ActionCreators from '../redux/actions';
+import classNames from 'classnames';
+import { enginesData } from '../constants/AIEngine';
 
-function Form({ updateResponses }) {
+function Form({ error, actions }) {
   const [prompt, setPrompt] = useState('');
-
+  const [engine, setEngine] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmit, setIsSubmit] = useState(false);
+  console.log(enginesData);
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const data = {
-      prompt,
-      temperature: 0.5,
-      max_tokens: 64,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0
-    };
-
-    if (prompt !== '') {
-      api
-        .post('/', data)
-        .then((res) => {
-          const newResponse = res.data.choices[0].text;
-          const newResponseDate = res.data.created;
-          updateResponses(prompt, newResponse, newResponseDate);
-        })
-        .catch((err) => {
-          // TODO: handle error
-        });
+    setIsSubmit(true);
+    if (prompt === '' || engine === '') {
+      return;
+    }
+    resetForm();
+    actions.getResponse(prompt, engine);
+    if (error) {
+      //TODO: error handling
+      setErrorMessage(error);
     }
   };
+
+  const resetForm = () => {
+    setPrompt('');
+    setEngine('');
+    setErrorMessage('');
+    setIsSubmit(false);
+  };
+
   return (
     <div className="mb-3">
       <form name="responseForm" onSubmit={handleSubmit}>
@@ -39,11 +42,14 @@ function Form({ updateResponses }) {
             onChange={(event) => {
               setPrompt(event.target.value);
             }}
-            rows={5}
+            rows={3}
             cols={30}
             form="responseForm"
-            className="form-control"
+            className={classNames('form-control', {
+              'is-invalid': prompt === '' && isSubmit
+            })}
             required></textarea>
+          <div className="invalid-feedback">Please enter a prompt in the textarea</div>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
@@ -53,4 +59,12 @@ function Form({ updateResponses }) {
   );
 }
 
-export default Form;
+const mapStateToProps = (state) => ({
+  error: state.error
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(ActionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

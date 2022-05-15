@@ -1,4 +1,4 @@
-import { loadState, saveState } from '../localStorage';
+import { loadState, saveState } from '../services/localStorage';
 import { configureStore } from '@reduxjs/toolkit';
 import responseReducer from './reducers';
 

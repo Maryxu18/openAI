@@ -6,20 +6,20 @@ Moment.globalFormat = 'D MMM YYYY';
 
 const Response = ({ response }) => {
   return (
-    <div className="flex">
-      <div className="form-text container">
+    <div className="response_flex">
+      <div className="form-text response_container">
         <div>{response.engineName} Engine</div>
-        <Moment unix className="date-label">
+        <Moment unix className="response_date-label">
           {response.date}
         </Moment>
       </div>
-      <div className="container">
-        <div className="header"> Prompt:</div>
-        <div className="info p text-break"> {response.prompt} </div>
+      <div className="response_container">
+        <div className="response_header"> Prompt:</div>
+        <div className="p text-break"> {response.prompt} </div>
       </div>
-      <div className="container">
-        <div className="header">Response:</div>
-        <div className="info p text-break"> {response.response} </div>
+      <div className="response_container">
+        <div className="response_header">Response:</div>
+        <div className="p text-break"> {response.response} </div>
       </div>
     </div>
   );

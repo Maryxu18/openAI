@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../redux/actions';
@@ -11,19 +11,20 @@ function Form({ error, actions }) {
   const [engine, setEngine] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
-  console.log(enginesData);
+
+  useEffect(() => {
+    setErrorMessage(error);
+    console.log(error);
+  }, [error]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(true);
     if (prompt === '' || engine === '') {
       return;
     }
-    resetForm();
     actions.getResponse(prompt, engine);
-    if (error) {
-      // TODO: error handling
-      setErrorMessage(error);
-    }
+    resetForm();
   };
 
   const resetForm = () => {
@@ -63,7 +64,7 @@ function Form({ error, actions }) {
               'is-invalid': engine === '' && isSubmit
             })}
             aria-label="Default select example">
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               Select an Option
             </option>
             {enginesData &&

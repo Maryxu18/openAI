@@ -39,11 +39,11 @@ function ResponseList({ responseList }) {
   };
 
   return (
-    <div>
+    <div className="form_container">
       <div className="h3" style={{ textAlign: 'left' }}>
         Responses
       </div>
-      <div className="tool-bar">
+      <div className="form_tool-bar">
         <div className="form-text"> Filter By Engine </div>
         <button
           type="button"
@@ -87,7 +87,10 @@ function ResponseList({ responseList }) {
 ResponseList.propTypes = {
   responseList: PropTypes.arrayOf(
     PropTypes.shape({
-      response: PropTypes.object
+      prompt: PropTypes.string,
+      response: PropTypes.string,
+      date: PropTypes.number,
+      engineName: PropTypes.string
     })
   )
 };

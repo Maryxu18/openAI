@@ -42,7 +42,11 @@ export const getResponse = (prompt, engine) => {
         );
       })
       .catch((error) => {
-        dispatch(addResponseFailure({ error: error.code }));
+        dispatch(
+          addResponseFailure({
+            error: error.message
+          })
+        );
       });
   };
 };

@@ -8,7 +8,7 @@ import { enginesData } from '../../constants/AIEngine';
 import './index.style.css';
 
 function ResponseList({ responseList }) {
-  const pageSize = 2;
+  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [currentResponses, setCurrentReponses] = useState(responseList.slice(0, pageSize));
 

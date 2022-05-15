@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Response from '../Response';
+import PropTypes from 'prop-types';
 
 function ResponseList({ responseList }) {
   return (
@@ -17,5 +18,13 @@ function ResponseList({ responseList }) {
     </div>
   );
 }
+
+ResponseList.propTypes = {
+  responseList: PropTypes.arrayOf(
+    PropTypes.shape({
+      response: PropTypes.object
+    })
+  )
+};
 
 export default ResponseList;

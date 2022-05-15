@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as ActionCreators from '../redux/actions';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { enginesData } from '../constants/AIEngine';
+import * as ActionCreators from '../../redux/actions';
+// import { enginesData } from '../../constants/AIEngine';
 
 function Form({ error, actions }) {
   const [prompt, setPrompt] = useState('');
   const [engine, setEngine] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
-  console.log(enginesData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -20,7 +21,7 @@ function Form({ error, actions }) {
     resetForm();
     actions.getResponse(prompt, engine);
     if (error) {
-      //TODO: error handling
+      // TODO: error handling
       setErrorMessage(error);
     }
   };
@@ -82,6 +83,10 @@ function Form({ error, actions }) {
     </div>
   );
 }
+Form.propTypes = {
+  error: PropTypes.string,
+  actions: PropTypes.object
+};
 
 const mapStateToProps = (state) => ({
   error: state.error

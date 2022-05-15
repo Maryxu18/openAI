@@ -1,6 +1,7 @@
 import React from 'react';
-import './index.style.scss';
+// import './index.style.scss';
 import Moment from 'react-moment';
+import PropTypes from 'prop-types';
 Moment.globalFormat = 'D MMM YYYY';
 
 const Response = ({ response }) => {
@@ -20,6 +21,15 @@ const Response = ({ response }) => {
       </div>
     </div>
   );
+};
+
+Response.propTypes = {
+  response: PropTypes.shape({
+    prompt: PropTypes.string,
+    response: PropTypes.string,
+    date: PropTypes.number,
+    engineName: PropTypes.string
+  })
 };
 
 export default Response;

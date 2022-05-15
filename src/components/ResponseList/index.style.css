@@ -1,0 +1,18 @@
+.tool-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+
+/* @media screen and (max-width: 750px) {
+    .toolbar {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+} */
+
+.form-select {
+    width: auto !important;
+}

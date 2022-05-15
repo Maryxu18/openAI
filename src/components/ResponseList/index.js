@@ -1,6 +1,7 @@
 import React from 'react';
 import Response from '../Response';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 function ResponseList({ responseList }) {
   return (
@@ -27,4 +28,8 @@ ResponseList.propTypes = {
   )
 };
 
-export default ResponseList;
+const mapStateToProps = (state) => ({
+  responseList: state.responseList
+});
+
+export default connect(mapStateToProps, null)(ResponseList);

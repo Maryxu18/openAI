@@ -51,6 +51,30 @@ function Form({ error, actions }) {
             required></textarea>
           <div className="invalid-feedback">Please enter a prompt in the textarea</div>
         </div>
+        <div className="mb-3">
+          <label className="form-label"> Select an AI Engine</label>{' '}
+          <select
+            value={engine}
+            onChange={(event) => {
+              setEngine(event.target.value);
+            }}
+            className={classNames('form-select', {
+              'is-invalid': engine === '' && isSubmit
+            })}
+            aria-label="Default select example">
+            <option value="" selected disabled hidden>
+              Select an Option
+            </option>
+            <option value="text-ada-001">Ada (Fastest)</option>
+            <option value="text-babbage-001">Babbage</option>
+            <option value="text-curie-001">Curie</option>
+            <option value="text-davinci-002">Davinci (Most Powerful)</option>
+          </select>
+          <div className="invalid-feedback">Please select an AI engine</div>
+        </div>
+        <div className="alert alert-danger" role="alert" hidden={errorMessage === ''}>
+          {errorMessage}
+        </div>
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

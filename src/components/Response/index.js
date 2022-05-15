@@ -1,5 +1,5 @@
 import React from 'react';
-// import './index.style.scss';
+import './index.style.css';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
 Moment.globalFormat = 'D MMM YYYY';

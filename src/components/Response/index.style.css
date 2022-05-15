@@ -1,0 +1,27 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+    background-color: #E4F0EF;
+    border-radius: 20px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
+
+.date_header {
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    text-align: left;
+    justify-content: left;
+}
+
+.header {
+    font-weight: bold;
+    text-align: left;
+}
